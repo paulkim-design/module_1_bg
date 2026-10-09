@@ -1,0 +1,65 @@
+/* Global reset and baseline. Loaded after tokens.css on every page. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-width: 1280px; /* Claude.md: desktop only, min. 1280px */
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  font-weight: var(--type-body-weight);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+/* Claude.md: "mark new copy with a data-draft attribute and a subtle visual
+   marker" — anything not transcribed verbatim from a screenshot gets this. */
+[data-draft="true"] {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 3px;
+}
+
+/* Generic print utility: anything screen-only (chrome, nav, controls) gets
+   this class; a page's own @media print block shows whatever is meant to
+   survive onto paper instead (see offer.css). */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

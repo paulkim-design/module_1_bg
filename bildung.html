@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bildung im Museum — Berlinische Galerie</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components/SiteHeader/site-header.css">
+<link rel="stylesheet" href="components/SiteFooter/site-footer.css">
+<link rel="stylesheet" href="components/Link/link.css">
+<link rel="stylesheet" href="components/PageHeader/page-header.css">
+<link rel="stylesheet" href="components/AudienceCard/audience-card.css">
+<link rel="stylesheet" href="components/NewsletterBanner/newsletter-banner.css">
+<link rel="stylesheet" href="components/FeatureCard/feature-card.css">
+<link rel="stylesheet" href="components/EventListItem/event-list-item.css">
+<link rel="stylesheet" href="components/EntryModule/entry-module.css">
+<link rel="stylesheet" href="bildung.css">
+</head>
+<body>
+
+<header class="site-header no-print">
+  <ul class="site-header__utility">
+    <li><a href="#">Presse</a></li>
+    <li><a href="#">Kontakt</a></li>
+    <li><a href="#">Leichte Sprache</a></li>
+    <li><a href="#">DGS</a></li>
+    <li><a href="#">Schriftgröße</a></li>
+    <li><a href="#">Kontrast</a></li>
+    <li><a href="#" aria-current="true">De</a> / <a href="#">En</a></li>
+    <li><a href="#" class="site-header__utility-today">Heute +</a></li>
+  </ul>
+  <div class="site-header__row">
+    <a href="bildung.html" class="site-header__logo">
+      <img src="assets/shared/logo.png" alt="Berlinische Galerie – Museum für Moderne Kunst, Startseite">
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="site-header__nav">
+        <li><a href="#">Besuch</a></li>
+        <li><a href="#">Ausstellungen</a></li>
+        <li><a href="#" aria-current="page">Programme</a></li>
+        <li><a href="#">Sammlung</a></li>
+        <li><a href="#">Berlinische Galerie</a></li>
+      </ul>
+    </nav>
+    <a href="#" class="newsletter-badge" data-draft="true">Newsletter</a>
+  </div>
+</header>
+
+<main class="bildung-main">
+
+  <div class="bildung-hero">
+    <div class="page-header">
+      <h1>Bildung im Museum</h1>
+    </div>
+    <ul class="bildung-hero__jumplinks">
+      <li><a href="#outreach">Outreach ↓</a></li>
+      <li><a href="#atelier">Atelier Bunter Jakob ↓</a></li>
+      <li><a href="#raum">207 m². Raum für Aktion und Kooperation ↓</a></li>
+    </ul>
+    <figure class="bildung-hero__figure">
+      <img src="assets/bildung/hero.jpg" alt="Kinder basteln gemeinsam an einem Tisch mit Bastelmaterial">
+      <figcaption>© Daniel Müller</figcaption>
+    </figure>
+  </div>
+
+  <section class="bildung-intro">
+    <h2 class="section-heading">Kunst aus Berlin<br>für alle!</h2>
+    <div class="bildung-intro__body">
+      <p>
+        Kunst erleben und mehr erfahren, sich austauschen, Fragen stellen, selbst
+        kreativ werden und vor allem: Spaß haben! In unserem Bildungsprogramm wollen
+        wir gemeinsam mit Ihnen die Ausstellungen in der Berlinischen Galerie
+        entdecken. Berliner*innen und Gäste, Erwachsene und Jugendliche, Kinder und
+        Familien, Kita-Gruppen und Schulklassen sowie Menschen mit Behinderungen –
+        jede*r findet bei uns ein Angebot. Moderne und zeitgenössische Kunst aus
+        Berlin – für alle!
+      </p>
+      <p>
+        Unser Bildungsprogramm unterstützen zwei kompetente Partner: Jugend im
+        Museum e.V. und Museumsdienst Berlin.
+      </p>
+    </div>
+  </section>
+
+  <div class="bildung-photo-row">
+    <div class="zoom-affordance"><img src="assets/bildung/kunst-foto-1.jpg" alt="Schulklasse arbeitet mit Tablets im Museum"></div>
+    <div class="zoom-affordance"><img src="assets/bildung/kunst-foto-2.jpg" alt="Besucher*innen im Austausch im Atelier, eine Person im Rollstuhl"></div>
+  </div>
+
+  <div class="newsletter-banners">
+    <div class="newsletter-banner">
+      <h2>Newsletter für Familien</h2>
+      <a href="#">Jetzt anmelden</a>
+    </div>
+    <div class="newsletter-banner">
+      <h2>Newsletter für Lehrer*innen</h2>
+      <a href="#">Jetzt per E-Mail anmelden</a>
+    </div>
+  </div>
+
+  <section id="angebote-vor-ort">
+    <h2 class="section-heading">Angebote vor Ort</h2>
+    <div class="audience-carousel">
+      <a class="audience-card" href="#"><img src="assets/bildung/audience-schulen-kitas.jpg" alt="Schulen und Kitas"></a>
+      <a class="audience-card" href="#"><img src="assets/bildung/audience-familien-kinder.jpg" alt="Familien und Kinder"></a>
+      <a class="audience-card" href="#"><img src="assets/bildung/audience-jugendliche-erwachsene.jpg" alt="Jugendliche und Erwachsene"></a>
+      <a class="audience-card" href="#"><img src="assets/bildung/audience-menschen-behinderungen.jpg" alt="Menschen mit Behinderungen"></a>
+    </div>
+    <div class="audience-carousel__nav">
+      <button type="button" aria-label="Vorherige Angebote" id="audience-prev">←</button>
+      <button type="button" aria-label="Weitere Angebote" id="audience-next">→</button>
+    </div>
+  </section>
+
+  <div id="entry-module-root"></div>
+
+  <section id="naechste-termine">
+    <h2 class="section-heading">Nächste Termine</h2>
+    <div class="termine-list">
+      <p class="termine-date">10</p>
+      <div class="termine-meta">
+        <p>Oktober</p>
+        <p>Samstag</p>
+      </div>
+      <div></div>
+
+      <div></div>
+      <p class="termine-time">15 Uhr</p>
+      <div class="termine-content">
+        <p>Führung</p>
+        <h3>Wochenendführung: Lovis Corinth</h3>
+        <p>In 60 Minuten geben wir Einblicke in die Sonderausstellung</p>
+      </div>
+
+      <div></div>
+      <p class="termine-time">16:15 Uhr</p>
+      <div class="termine-content">
+        <p>Führung</p>
+        <h3>Wochenendführung: Lovis Corinth</h3>
+        <p>In 60 Minuten geben wir Einblicke in die Sonderausstellung</p>
+      </div>
+    </div>
+    <p class="termine-more"><a class="link" href="#">Mehr laden</a></p>
+  </section>
+
+  <section id="outreach">
+    <h2 class="section-heading">Outreach</h2>
+    <p>Unsere Kooperationsprojekte mit Schulen, Vereinen und Gruppen aus der Nachbarschaft</p>
+    <p>
+      Wir wollen Menschen, die unser Museum noch nicht kennen, für die Berlinische
+      Galerie begeistern und uns für neue Besucher*innengruppen öffnen. Darum
+      entwickeln wir gemeinsam mit Vereinen und Initiativen aus unserer
+      Nachbarschaft langfristige Kunst- und Bildungsprojekte, arbeiten regelmäßig
+      mit Berliner Schulen zusammen und erproben innovative Vermittlungsformate.
+      Im Mittelpunkt steht dabei immer die Begegnung – mit der Kunst und mit
+      anderen Sichtweisen. Unser Museum soll ein Ort der Kommunikation für alle
+      sein. Unser Ziel: die Bildungsarbeit und das Museum kooperativ und
+      partizipativ gestalten.
+    </p>
+    <div class="feature-card-row">
+      <div class="feature-card">
+        <div class="zoom-affordance"><img src="assets/bildung/outreach-museum-im-sucher.jpg" alt="Zwei Kinder zeichnen von oben betrachtet auf Papier"></div>
+        <h3>Museum im Sucher</h3>
+        <p>Vier Berliner Schulklassen nehmen das Museum seit Mitte 2018 genau unter die Lupe.</p>
+      </div>
+      <div class="feature-card">
+        <div class="zoom-affordance"><img src="assets/bildung/outreach-standortwechsel.jpg" alt="Obststücke und Lebensmittel auf einer Picknickdecke von oben"></div>
+        <h3>Standortwechsel</h3>
+        <p>Ein*e Künstler*in oder ein Kollektiv, die schon länger engagiert mit Gruppen Kunst machen, residieren einmal wöchentlich im Museum.</p>
+      </div>
+      <div class="feature-card">
+        <div class="zoom-affordance"><img src="assets/bildung/outreach-reflexionstreffen.jpg" alt="Team im Gespräch an einem Tisch"></div>
+        <h3>Reflexionstreffen</h3>
+        <p>Das Team setzt sich kritisch mit gesellschaftlich relevanten Themen auseinander</p>
+      </div>
+    </div>
+    <p><a class="link" href="#">→ Mehr erfahren zu weiteren Kooperationsprojekten</a></p>
+  </section>
+
+  <section id="atelier">
+    <h2 class="section-heading">Atelier Bunter Jakob</h2>
+    <p>
+      Im Atelier Bunter Jakob ist (fast) alles möglich. Hier können Kinder und
+      Jugendliche ihrer Kreativität freien Lauf lassen und eigene Ideen umsetzen:
+      Farben, Techniken und Materialien ausprobieren, fotografieren, malen,
+      drucken, einen Trickfilm drehen oder Skulpturen bauen – im Mittelpunkt
+      stehen immer das Experiment und der Spaß an der Kunst!
+    </p>
+    <p>
+      Die Programme im Atelier Bunter Jakob werden von Jugend im Museum e.V. für
+      die Berlinische Galerie entwickelt und durchgeführt.
+    </p>
+    <div class="atelier__links">
+      <a class="link" href="#">Mach mit! Workshops, Ferienkurse und Kindergeburtstage: Angebote im Atelier Bunter Jakob</a>
+      <a class="link" href="#">Unser Team im Atelier Bunter Jakob</a>
+    </div>
+    <div class="photo-row-2col">
+      <div class="zoom-affordance"><img src="assets/bildung/atelier-foto-1.jpg" alt="Nahaufnahme einer Person, die mit Farbe arbeitet"></div>
+      <div class="zoom-affordance"><img src="assets/bildung/atelier-foto-2.jpg" alt="Werkstattraum im Atelier Bunter Jakob mit Materialien und Sonnenlicht"></div>
+    </div>
+  </section>
+
+  <section id="raum">
+    <p class="section-eyebrow-number">207 m²</p>
+    <h2 class="section-heading">Raum für Aktion und Kooperation</h2>
+    <p>
+      In der Berlinischen Galerie gibt es im Ausstellungsbereich einen Raum
+      speziell für Kulturelle Bildung. Auf über 200 m² ist Platz für Workshops,
+      Kooperationsprojekte und künstlerisches Arbeiten.
+    </p>
+    <p>
+      Es finden regelmäßig Programme mit Kindern, Familien, Schulklassen und
+      Gruppen aus der Nachbarschaft statt. In Ausstellungen und über eine
+      Projektionsfläche werden Ergebnisse aus den Projekten sichtbar. Eine
+      raumfüllende Sitzplattform lädt alle Besucher*innen zum Austausch und
+      Verweilen ein. Damit öffnet sich das Museum weiter für seine
+      Besucher*innen und schafft langfristig einen Ort für kritische Debatten
+      und künstlerische Prozesse.
+    </p>
+    <p><a class="link" href="#">Mehr erfahren</a></p>
+    <div class="raum-photos">
+      <div class="raum-photos__top">
+        <img src="assets/bildung/raum-foto-tisch.jpg" alt="Blick von oben auf Besucher*innen an einem kreuzförmigen Tisch im Ausstellungsraum">
+        <div class="zoom-affordance"><img src="assets/bildung/raum-foto-kind.jpg" alt="Kind fädelt eine Perlenkette"></div>
+      </div>
+      <div class="zoom-affordance raum-photos__group"><img src="assets/bildung/raum-foto-gruppe.jpg" alt="Gruppe von Besucher*innen bastelt gemeinsam an langen Tischen"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer no-print">
+  <div class="site-footer__back-to-top">
+    <a href="#top" class="button" aria-label="Nach oben">↑</a>
+  </div>
+  <div class="site-footer__columns">
+    <div>
+      <ul class="site-footer__social">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">Spotify</a></li>
+      </ul>
+      <ul class="site-footer__links">
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Fragen &amp; Antworten</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Digitale Barrierefreiheit</a></li>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Cookie-Einstellungen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading">Öffnungszeiten</p>
+        <p>Mi – Mo 10 – 18 Uhr</p>
+        <p>Dienstags geschlossen</p>
+      </div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading">Eintritt</p>
+        <p>
+          Eintritt 14 €, ermäßigt 7 €<br>
+          Happy Wednesday: Ermäßigter Eintritt (7 €) für alle an jedem
+          1. Mittwoch des Monats
+        </p>
+        <p>
+          Freier Eintritt bis 18 Jahre<br>
+          Freier Eintritt für Geflüchtete
+        </p>
+      </div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading"><a href="#">Tickets kaufen</a></p>
+        <p>
+          Ticketkooperation Jüdisches Museum Berlin: Ermäßigter Eintritt gegen
+          Vorlage eines Tickets des Jüdischen Museums. Dieses Angebot gilt auch
+          umgekehrt.
+        </p>
+      </div>
+    </div>
+    <div>
+      <p class="site-footer__heading">Berlinische Galerie</p>
+      <p>
+        Landesmuseum für Moderne Kunst, Fotografie und Architektur<br>
+        Stiftung Öffentlichen Rechts
+      </p>
+      <p>
+        Alte Jakobstraße 124 – 128<br>
+        10969 Berlin
+      </p>
+      <p>
+        <a href="mailto:bg@berlinischegalerie.de">bg@berlinischegalerie.de</a><br>
+        Tel +49 (0)30-789 02-600<br>
+        Fax +49 (0)30-789 02-700
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="bildung.js"></script>
+</body>
+</html>

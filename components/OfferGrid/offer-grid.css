@@ -1,0 +1,11 @@
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-21) var(--space-18);
+}
+
+.offer-grid__empty {
+  grid-column: 1 / -1;
+  padding: var(--space-24) 0;
+  color: var(--color-text);
+}

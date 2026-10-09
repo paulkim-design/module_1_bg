@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototyp — Angebote für Schulen und Kitas</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components/Link/link.css">
+<style>
+  /*
+    This index is the prototype's own entry point, not a screen from any
+    screenshot - it's scaffolding for reviewing the three real screens, so
+    it intentionally doesn't borrow the site's header/footer chrome (that
+    would misrepresent it as a fourth "real" page). Its copy is all new;
+    marked data-draft like everything else.
+  */
+  body { padding: var(--space-29) var(--space-24); max-width: 72ch; }
+  h1 { font-size: var(--type-display-small-size); font-weight: var(--type-display-small-weight); margin-bottom: var(--space-13); }
+  .lede { font-size: var(--type-title-small-size); margin-bottom: var(--space-24); max-width: 60ch; }
+  ol { padding-left: 1.3em; margin: 0 0 var(--space-24); }
+  li { margin-bottom: var(--space-13); }
+  li p { margin: var(--space-3) 0 0; font-size: 13px; opacity: 0.75; }
+  .gaps-note { border-left: 3px solid var(--color-accent); padding: var(--space-9) var(--space-13); font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1 data-draft="true">Berlinische Galerie — Angebote für Schulen und Kitas</h1>
+  <p class="lede" data-draft="true">
+    Proof-of-concept-Prototyp (Stufe 1–4). Desktop only, min. 1280px.
+    Drei Screens, verlinkt für den vollständigen Durchlauf.
+  </p>
+  <ol>
+    <li>
+      <a class="link" href="bildung.html">1. Bildung im Museum</a>
+      <p data-draft="true">Einstieg mit dem neuen Modul „Für Schulklassen" (Klassenstufen-Links).</p>
+    </li>
+    <li>
+      <a class="link" href="angebote.html">2. Angebote für Schulen und Kitas (Katalog)</a>
+      <p data-draft="true">Filterbarer Katalog aller 12 Angebote, Filterzustand in der URL.</p>
+    </li>
+    <li>
+      <a class="link" href="offer.html?id=ueberblicksfuehrung-josef-kaiser">3. Angebot: Überblicksführung (Josef Kaiser)</a>
+      <p data-draft="true">Einzelansicht mit allen bekannten Fakten, Drucken und Link kopieren.</p>
+    </li>
+  </ol>
+  <p class="gaps-note" data-draft="true">
+    Bekannte Lücken und Annahmen stehen in <code>README.md</code>.
+  </p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* The two red "Newsletter für ..." banners from bildung.png. Same red
+   (--color-accent) and white-on-red pattern as the rest of the site's
+   newsletter banners (overview.png has the same treatment). */
+
+.newsletter-banners {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.newsletter-banner {
+  background: var(--color-accent);
+  color: var(--color-background);
+  padding: var(--space-21) var(--space-24);
+}
+
+.newsletter-banner h2 {
+  font-family: var(--type-headline-medium-font);
+  font-size: var(--type-headline-medium-size);
+  font-weight: var(--type-headline-medium-weight);
+  margin-bottom: var(--space-9);
+}
+
+.newsletter-banner a {
+  color: var(--color-background);
+  font-weight: 700;
+  text-decoration: underline;
+}

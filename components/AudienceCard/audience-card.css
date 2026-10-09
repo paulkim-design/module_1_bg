@@ -1,0 +1,43 @@
+/*
+  "Angebote vor Ort" carousel from bildung.png: image with a dark bottom
+  scrim and a bold white label. The label is baked into the screenshot's
+  pixels (full-bleed photo + gradient + text, no separate layers) - kept
+  that way here too, as a plain image, after testing showed that rebuilding
+  it as a real text layer (CSS gradient + absolutely positioned text over
+  a background photo) reliably produced a ghost duplicate of the text in
+  this environment's headless Chrome (reproduced down to a 4-line minimal
+  case, in both --screenshot and --print-to-pdf, with the DOM/PDF text
+  layer never actually duplicated - a paint-only artifact). Rather than
+  ship something unverifiable, the label stays part of the image; alt text
+  carries the name for screen readers. See README.
+*/
+
+.audience-carousel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-18);
+}
+
+.audience-card {
+  display: block;
+  text-decoration: none;
+}
+
+.audience-card img {
+  display: block;
+  width: 100%;
+}
+
+.audience-carousel__nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-13);
+}
+
+.audience-carousel__nav button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: var(--space-3) var(--space-7);
+}

@@ -1,0 +1,137 @@
+/*
+  Rebuilt from input/detail.png: H1 + dek (no format eyebrow on this page,
+  unlike OfferCard - confirmed by re-checking the screenshot), figure with
+  credit caption, plain fact lines, registration link. "Was Ihre Klasse
+  mitnimmt", "Gruppenbesuch" and "Für die Schulleitung" have no screenshot
+  precedent (new sections per the brief) and reuse Stage 2's heading/body
+  styles rather than inventing new ones. See README.
+*/
+
+.offer-detail {
+  max-width: 68ch;
+  padding: var(--space-24);
+}
+
+.offer-detail__back {
+  display: inline-block;
+  margin-bottom: var(--space-21);
+}
+
+.offer-detail__head h1 {
+  font-family: var(--type-display-small-font);
+  font-size: var(--type-display-small-size);
+  font-weight: var(--type-display-small-weight);
+  line-height: var(--type-display-small-line);
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 10px;
+  margin-bottom: var(--space-13);
+}
+
+.offer-detail__dek {
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+  line-height: var(--type-title-small-line);
+  margin-bottom: var(--space-21);
+}
+
+.offer-detail__figure {
+  margin: 0 0 var(--space-18);
+}
+
+.offer-detail__figure img,
+.offer-detail__image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-gray-900);
+}
+
+.offer-detail__figure figcaption {
+  font-size: 12px;
+  color: var(--color-text);
+  opacity: 0.6;
+  margin-top: var(--space-3);
+}
+
+.offer-detail__facts {
+  margin-bottom: var(--space-18);
+}
+
+.offer-detail__facts p {
+  margin-bottom: var(--space-3);
+}
+
+.offer-detail__registration {
+  margin-bottom: var(--space-24);
+}
+
+.offer-detail__outcomes,
+.offer-detail__group-visit,
+.offer-detail__principal {
+  padding-top: var(--space-24);
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  margin-bottom: var(--space-24);
+}
+
+.offer-detail__outcomes h2,
+.offer-detail__group-visit h2,
+.offer-detail__principal h2 {
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+  margin-bottom: var(--space-9);
+}
+
+.offer-detail__draft-label {
+  font-size: 12px;
+  margin-bottom: var(--space-13);
+}
+
+.offer-detail__outcomes ul {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+.offer-detail__group-visit p {
+  margin-bottom: var(--space-9);
+  max-width: 60ch;
+}
+
+.offer-detail__principal-actions {
+  display: flex;
+  gap: var(--space-13);
+}
+
+.offer-detail__status {
+  margin-top: var(--space-9);
+  font-size: 13px;
+  min-height: 1.5em;
+}
+
+/* Print summary: hidden on screen, the only thing shown under @media print
+   (see offer.css). A plain, static one-pager - no layout cleverness needed
+   for something meant to be printed once and handed to a Schulleitung. */
+.offer-detail__print-summary {
+  display: none;
+}
+
+.offer-detail__print-summary dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 12px;
+}
+
+.offer-detail__print-summary dt {
+  font-weight: 700;
+}
+
+.offer-detail__print-summary dd {
+  margin: 0;
+}
+
+.offer-detail__print-summary h2 span {
+  font-weight: 400;
+  font-size: 0.8em;
+  margin-left: 6px;
+}

@@ -1,0 +1,16 @@
+/*
+  Unlike Button/Checkbox, this one has a real measured source: design-system.html's
+  Link / "Strong 3" variant - 16px SemiBold, underline, type-body, 21:1 contrast,
+  passes AA. Used for standalone action links (back-to-catalogue, booking,
+  tickets) rather than ad-hoc anchor styling.
+*/
+
+.link {
+  display: inline-block;
+  font-family: var(--type-body-font);
+  font-size: var(--type-body-size);
+  font-weight: 600;
+  line-height: var(--type-body-line);
+  text-decoration: underline;
+  color: var(--color-text);
+}

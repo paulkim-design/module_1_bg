@@ -1,0 +1,7 @@
+/* Page-level glue for offer.html - not a reusable component. */
+
+@media print {
+  .offer-detail__print-summary {
+    display: block;
+  }
+}

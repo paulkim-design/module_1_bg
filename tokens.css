@@ -1,0 +1,131 @@
+/*
+  Every value here is transcribed from input/design-system.html (measured off
+  the live berlinischegalerie.de catalogue page, 8 Oct 2026). Nothing is
+  invented; gaps in the source are called out in README.md "Gaps" rather than
+  patched with a guessed value. Token names follow the source's own names
+  (type-*, space-*) where the source gave one, so a value here can be traced
+  back to the spec page.
+*/
+
+:root {
+  /* Colour: primitives */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-900: #1c1c1c;
+  --color-red-400: #ff6347;
+  --color-red-500: #e30613;
+
+  /* Colour: semantic roles (5 named roles in the source) */
+  --color-background: var(--color-white);
+  --color-text: var(--color-black);
+  --color-action-bg: var(--color-white); /* GAP: see README — 1:1 contrast on --color-background */
+  --color-on-action: var(--color-black);
+  --color-negative: var(--color-red-400); /* GAP: see README — 2.9:1, fails AA as text on white */
+
+  /* Not a named role in the source; red-500 recurs across Button/Tertiary
+     and the site's red banners, so it is the closest token to a brand
+     accent colour. See README Gaps before treating it as settled. */
+  --color-accent: var(--color-red-500);
+
+  /* Typography: typefaces */
+  --font-family-body: "HN", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* GAP: see README — "icomoon" is an interface/icon font the scrape mismeasured as a text style (type-headline-small). Do not use for body or heading copy. */
+  --font-family-interface: "icomoon", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Typography: text styles (9 in the source) */
+  --type-display-large-font: var(--font-family-body);
+  --type-display-large-size: 100px;
+  --type-display-large-line: normal;
+  --type-display-large-weight: 900;
+
+  --type-display-medium-font: var(--font-family-body);
+  --type-display-medium-size: 60px;
+  --type-display-medium-line: normal;
+  --type-display-medium-weight: 900;
+
+  --type-display-small-font: var(--font-family-body);
+  --type-display-small-size: 40px;
+  --type-display-small-line: normal;
+  --type-display-small-weight: 900;
+
+  --type-headline-large-font: var(--font-family-body);
+  --type-headline-large-size: 30.08px;
+  --type-headline-large-line: 33.088px;
+  --type-headline-large-weight: 600;
+
+  --type-headline-medium-font: var(--font-family-body);
+  --type-headline-medium-size: 30px;
+  --type-headline-medium-line: normal;
+  --type-headline-medium-weight: 900;
+
+  /* GAP: see README — sourced as icomoon/Regular, almost certainly a
+     mismeasurement. Falling back to the body typeface at the same size
+     and the next closest weight until the real heading-small style is
+     confirmed against the live site. */
+  --type-headline-small-font: var(--font-family-body);
+  --type-headline-small-size: 24px;
+  --type-headline-small-line: normal;
+  --type-headline-small-weight: 400;
+
+  --type-title-large-font: var(--font-family-body);
+  --type-title-large-size: 22.04px;
+  --type-title-large-line: normal;
+  --type-title-large-weight: 400;
+
+  --type-title-small-font: var(--font-family-body);
+  --type-title-small-size: 20px;
+  --type-title-small-line: 28px;
+  --type-title-small-weight: 500;
+
+  --type-body-font: var(--font-family-body);
+  --type-body-size: 16px;
+  --type-body-line: 25px;
+  --type-body-weight: 500;
+
+  /* Spacing: 31 raw values, no consistent grid in the source (flagged in
+     README). Kept as space-1..31 to match the names the spec itself uses
+     (e.g. Button padding references "space-21" and "space-7"). */
+  --space-1: 2px;
+  --space-2: 3px;
+  --space-3: 4px;
+  --space-4: 5px;
+  --space-5: 6px;
+  --space-6: 7px;
+  --space-7: 8px;
+  --space-8: 9px;
+  --space-9: 10px;
+  --space-10: 11px;
+  --space-11: 12px;
+  --space-12: 15px;
+  --space-13: 16px;
+  --space-14: 17px;
+  --space-15: 20px;
+  --space-16: 21px;
+  --space-17: 22px;
+  --space-18: 24px;
+  --space-19: 25px;
+  --space-20: 30px;
+  --space-21: 32px;
+  --space-22: 33px;
+  --space-23: 40px;
+  --space-24: 48px;
+  --space-25: 50px;
+  --space-26: 56px;
+  --space-27: 60px;
+  --space-28: 96px;
+  --space-29: 100px;
+  --space-30: 150px;
+  --space-31: 175px;
+
+  /* Shape: 1 measured radius */
+  --radius-3xl: 57.6px;
+  /* GAP: see README — from the prose usage rule ("Cards use 50% corners"),
+     not from the measured Shape table. Treat as provisional. */
+  --radius-full: 50%;
+
+  /* Motion: durations and easing observed across 6 transition declarations
+     (the source lede claims 7; only 6 were listed, see README). */
+  --motion-duration-fast: 0.15s;
+  --motion-duration-base: 0.175s;
+  --motion-ease-out: ease-out;
+}

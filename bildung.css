@@ -1,0 +1,172 @@
+/* Page-level layout glue for bildung.html - not a reusable component. */
+
+.bildung-main {
+  padding: 0 var(--space-24) var(--space-29);
+}
+
+/* Shared by every bildung.png section heading (Kunst aus Berlin, Angebote
+   vor Ort, Nächste Termine, Outreach, Atelier Bunter Jakob, 207 m² - and
+   our new "Für Schulklassen"), so the EntryModule reads as one more section
+   among equals rather than a visually distinct inserted widget. */
+.section-heading {
+  font-family: var(--type-headline-medium-font);
+  font-size: var(--type-headline-medium-size);
+  font-weight: var(--type-headline-medium-weight);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+  margin-bottom: var(--space-13);
+}
+
+.bildung-main > section {
+  padding: var(--space-29) 0;
+}
+
+.bildung-main > section p {
+  max-width: 90ch;
+}
+
+.bildung-main > section p + p {
+  margin-top: var(--space-13);
+}
+
+/* The "207 m²" eyebrow above the Raum section's heading: its own smaller
+   underlined line, not part of the h2 - confirmed by re-checking
+   bildung.png closely, where the two lines have separate underlines at
+   different sizes rather than one heading wrapping onto two lines. */
+.section-eyebrow-number {
+  font-family: var(--type-title-large-font);
+  font-size: var(--type-title-large-size);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  margin-bottom: var(--space-3);
+}
+
+/* Page-specific chrome: a floating circular Newsletter CTA, present only on
+   this screenshot (checked overview.png/detail.png's header for the same
+   region - absent there), so added here rather than to the shared
+   SiteHeader component. Source has the label following a circular path;
+   approximated as plain centred text. See README. */
+.newsletter-badge {
+  position: absolute;
+  top: 54px;
+  right: var(--space-24);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-background);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+}
+
+.bildung-hero {
+  position: relative;
+}
+
+.bildung-hero .page-header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.site-header__row {
+  position: relative;
+}
+
+.termine-list + .termine-more {
+  text-align: right;
+  margin-top: var(--space-13);
+}
+
+.bildung-hero__jumplinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-9);
+  list-style: none;
+  margin: 0 0 var(--space-21);
+  padding: 0;
+  font-weight: 700;
+}
+
+.bildung-hero__figure {
+  margin: 0 0 var(--space-24);
+}
+
+.bildung-hero__figure img {
+  width: 100%;
+}
+
+.bildung-hero__figure figcaption {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-top: var(--space-3);
+}
+
+.bildung-intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-24);
+}
+
+.bildung-intro__body p + p {
+  margin-top: var(--space-13);
+}
+
+.bildung-photo-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-18);
+}
+
+.bildung-photo-row img {
+  width: 100%;
+  display: block;
+}
+
+.photo-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-18);
+  margin-top: var(--space-18);
+}
+
+.photo-row-2col img {
+  width: 100%;
+  display: block;
+}
+
+.raum-photos {
+  margin-top: var(--space-18);
+}
+
+.raum-photos__top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--space-18);
+  margin-bottom: var(--space-18);
+}
+
+.raum-photos img {
+  width: 100%;
+  display: block;
+}
+
+.raum-photos__group {
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.outreach__links,
+.atelier__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  margin: var(--space-13) 0;
+}

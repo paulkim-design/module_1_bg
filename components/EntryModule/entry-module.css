@@ -1,0 +1,28 @@
+/*
+  New module (Claude.md flow step 1), placed right after "Angebote vor Ort" -
+  see README for why. Reuses the page's own section-heading pattern
+  (bildung.css .section-heading) and the Link component for each grade, so
+  it reads as part of this page rather than an inserted widget.
+
+  New styling this needed, not reused from anywhere: the flex-wrap grade
+  grid itself (.entry-module__grades) and its item spacing. Everything else
+  - heading, body copy size, link style - is existing patterns.
+*/
+
+.entry-module {
+  padding: var(--space-24) 0;
+}
+
+.entry-module__intro {
+  max-width: 60ch;
+  margin-bottom: var(--space-18);
+}
+
+.entry-module__grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-9) var(--space-18);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

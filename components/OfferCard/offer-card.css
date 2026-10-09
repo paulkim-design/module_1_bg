@@ -1,0 +1,51 @@
+/*
+  design-system.html never documented a card component (see README Gaps).
+  Built from the primitives it does give us: square corners (Shape/Usage
+  rules say cards use 50% corners for *circular* crops elsewhere on the
+  site, not this rectangular teaser, so radius-3xl/full are not used here),
+  body/title text styles, and the one accessible border colour (black).
+*/
+
+.offer-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.offer-card__image-frame {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-gray-900);
+  margin-bottom: var(--space-13);
+}
+
+.offer-card__image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.offer-card__eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.offer-card__title {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+  line-height: var(--type-title-small-line);
+  margin-bottom: var(--space-3);
+}
+
+.offer-card__description {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  color: var(--color-text);
+}
+
+.offer-card:hover .offer-card__title {
+  text-decoration: underline;
+}

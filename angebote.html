@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angebote für Schulen und Kitas — Berlinische Galerie</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="components/SiteHeader/site-header.css">
+<link rel="stylesheet" href="components/SiteFooter/site-footer.css">
+<link rel="stylesheet" href="components/Button/button.css">
+<link rel="stylesheet" href="components/Checkbox/checkbox.css">
+<link rel="stylesheet" href="components/PageHeader/page-header.css">
+<link rel="stylesheet" href="components/ResultsToolbar/results-toolbar.css">
+<link rel="stylesheet" href="components/FilterPanel/filter-panel.css">
+<link rel="stylesheet" href="components/OfferGrid/offer-grid.css">
+<link rel="stylesheet" href="components/OfferCard/offer-card.css">
+<link rel="stylesheet" href="angebote.css">
+</head>
+<body>
+
+<header class="site-header">
+  <ul class="site-header__utility">
+    <li><a href="#">Presse</a></li>
+    <li><a href="#">Kontakt</a></li>
+    <li><a href="#">Leichte Sprache</a></li>
+    <li><a href="#">DGS</a></li>
+    <li><a href="#">Schriftgröße</a></li>
+    <li><a href="#">Kontrast</a></li>
+    <li><a href="#" aria-current="true">De</a> / <a href="#">En</a></li>
+    <li><a href="#" class="site-header__utility-today">Heute +</a></li>
+  </ul>
+  <div class="site-header__row">
+    <a href="overview.html" class="site-header__logo">
+      <img src="assets/shared/logo.png" alt="Berlinische Galerie – Museum für Moderne Kunst, Startseite">
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="site-header__nav">
+        <li><a href="#">Besuch</a></li>
+        <li><a href="#">Ausstellungen</a></li>
+        <li><a href="#" aria-current="page">Programme</a></li>
+        <li><a href="#">Sammlung</a></li>
+        <li><a href="#">Berlinische Galerie</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="page-header">
+    <h1>Angebote für Schulen und Kitas</h1>
+    <p class="page-header__lede">
+      Lebendig, fantasievoll, individuell. Für Kita-Kinder und Schüler*innen gibt es
+      in der Berlinischen Galerie ein vielfältiges Programm.
+    </p>
+  </div>
+
+  <div class="catalogue">
+    <div class="results-toolbar">
+      <button type="button" class="button" id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">
+        Filter
+      </button>
+      <p class="results-toolbar__count" id="results-count" data-draft="true" aria-live="polite"></p>
+    </div>
+
+    <div class="catalogue-layout__body" data-filter-layout>
+      <aside class="filter-panel" id="filter-panel" aria-label="Filter" hidden></aside>
+      <div class="offer-grid" id="offer-grid"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__back-to-top">
+    <a href="#top" class="button" aria-label="Nach oben">↑</a>
+  </div>
+  <div class="site-footer__columns">
+    <div>
+      <ul class="site-footer__social">
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="#">Spotify</a></li>
+      </ul>
+      <ul class="site-footer__links">
+        <li><a href="#">Presse</a></li>
+        <li><a href="#">Newsletter</a></li>
+        <li><a href="#">Fragen &amp; Antworten</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+        <li><a href="#">Digitale Barrierefreiheit</a></li>
+        <li><a href="#">Datenschutz</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Cookie-Einstellungen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading">Öffnungszeiten</p>
+        <p>Mi – Mo 10 – 18 Uhr</p>
+        <p>Dienstags geschlossen</p>
+      </div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading">Eintritt</p>
+        <p>
+          Eintritt 14 €, ermäßigt 7 €<br>
+          Happy Wednesday: Ermäßigter Eintritt (7 €) für alle an jedem
+          1. Mittwoch des Monats
+        </p>
+        <p>
+          Freier Eintritt bis 18 Jahre<br>
+          Freier Eintritt für Geflüchtete
+        </p>
+      </div>
+      <div class="site-footer__block">
+        <p class="site-footer__heading"><a href="#">Tickets kaufen</a></p>
+        <p>
+          Ticketkooperation Jüdisches Museum Berlin: Ermäßigter Eintritt gegen
+          Vorlage eines Tickets des Jüdischen Museums. Dieses Angebot gilt auch
+          umgekehrt.
+        </p>
+      </div>
+    </div>
+    <div>
+      <p class="site-footer__heading">Berlinische Galerie</p>
+      <p>
+        Landesmuseum für Moderne Kunst, Fotografie und Architektur<br>
+        Stiftung Öffentlichen Rechts
+      </p>
+      <p>
+        Alte Jakobstraße 124 – 128<br>
+        10969 Berlin
+      </p>
+      <p>
+        <a href="mailto:bg@berlinischegalerie.de">bg@berlinischegalerie.de</a><br>
+        Tel +49 (0)30-789 02-600<br>
+        Fax +49 (0)30-789 02-700
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script type="module" src="angebote.js"></script>
+</body>
+</html>

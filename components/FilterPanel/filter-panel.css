@@ -1,0 +1,64 @@
+/*
+  Facet content/behaviour reproduces input/filter.png (two columns, square
+  checkboxes, disabled-not-hidden options). The panel's own chrome (width,
+  border, the fact that it sits inline rather than as an overlay) has no
+  screenshot precedent - filter.png shows only the content - so this is a
+  plain bordered sidebar rather than an invented modal/drawer treatment.
+  See README.
+*/
+
+.filter-panel {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  padding: var(--space-18);
+  align-self: start;
+}
+
+.filter-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-18);
+}
+
+.filter-panel__header h2 {
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+}
+
+.filter-panel__close {
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--space-3);
+}
+
+.filter-panel__notice {
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-background);
+  padding: var(--space-9) var(--space-13);
+  margin-bottom: var(--space-18);
+  font-size: 13px;
+}
+
+.filter-panel__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-18);
+}
+
+.filter-panel__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--space-18);
+}
+
+.filter-panel__fieldset legend {
+  font-weight: 700;
+  padding: 0 0 var(--space-9);
+}
+
+.filter-panel__fieldset .checkbox {
+  padding: var(--space-3) 0;
+}

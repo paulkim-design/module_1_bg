@@ -1,0 +1,47 @@
+/*
+  Approximates the filter.png checkbox states: plain square, solid black
+  fill when checked, grey/muted when disabled. design-system.html never
+  measured a checkbox, so there is no sourced border-width or muted-text
+  colour — muting is done with opacity on --color-text (the one ink colour
+  we do have) rather than inventing a new grey token. See README Gaps.
+*/
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  cursor: pointer;
+}
+
+.checkbox__input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1.5px solid var(--color-text);
+  background: var(--color-background);
+  cursor: pointer;
+}
+
+.checkbox__input:checked {
+  background: var(--color-text);
+}
+
+.checkbox__input[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.checkbox__label {
+  font-size: var(--type-body-size);
+}
+
+.checkbox:has(.checkbox__input[aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
+.checkbox:has(.checkbox__input[aria-disabled="true"]) .checkbox__label {
+  opacity: 0.35;
+}

@@ -1,0 +1,40 @@
+/*
+  GAP (see README): design-system.html has no Primary button, and its
+  color-action/color-on-action pair is 1:1 contrast on white — unusable.
+  This reuses the one documented, accessible variant it does have ("Button /
+  Secondary": white fill, black text + border, square corners, 21:1
+  contrast) as a generic actionable button, rather than inventing a new
+  style. Padding is symmetric here instead of the source's measured
+  0/32/0/8, which was almost certainly accommodating an icon glyph we don't
+  have — not a layout rule worth copying literally.
+*/
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-7);
+  min-height: 36px;
+  padding: var(--space-7) var(--space-21);
+  border: 1px solid var(--color-text);
+  border-radius: 0;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  font-weight: var(--type-title-small-weight);
+  line-height: var(--type-title-small-line);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--motion-duration-base) var(--motion-ease-out);
+}
+
+.button:hover {
+  background: var(--color-background);
+  box-shadow: inset 0 0 0 1px var(--color-text);
+}
+
+.button[aria-pressed="true"] {
+  background: var(--color-text);
+  color: var(--color-background);
+}

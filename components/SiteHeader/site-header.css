@@ -1,0 +1,77 @@
+/*
+  Reproduces the chrome shared by input/overview.png and input/detail.png
+  (same header on both, confirmed by comparing the two screenshots).
+
+  GAP: the utility nav's icons (Leichte Sprache, DGS, Schriftgröße, Kontrast)
+  are rendered by an icon font ("icomoon", see design-system.html) we don't
+  have the glyphs for. Shown here as plain text links instead of inventing
+  icon shapes. See README Gaps.
+*/
+
+.site-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.site-header__utility {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-18);
+  padding: var(--space-11) var(--space-24);
+  list-style: none;
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.site-header__utility a {
+  text-decoration: none;
+}
+
+.site-header__utility a:hover {
+  text-decoration: underline;
+}
+
+.site-header__utility-today {
+  color: var(--color-accent);
+}
+
+.site-header__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-24);
+  padding: 0 var(--space-24) var(--space-18);
+}
+
+.site-header__logo {
+  display: block;
+  flex: none;
+}
+
+.site-header__logo img {
+  height: 70px;
+  width: auto;
+}
+
+.site-header__nav {
+  display: flex;
+  gap: var(--space-21);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header__nav a {
+  display: inline-block;
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+  text-decoration: none;
+  padding: var(--space-3) 0;
+}
+
+.site-header__nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}

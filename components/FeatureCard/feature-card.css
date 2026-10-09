@@ -1,0 +1,49 @@
+/* Outreach's 3 sub-items in bildung.png: image, bold title below it, body
+   text below that - no overlay, unlike AudienceCard. Also doubles as the
+   plain figure treatment for the Atelier/207m² photos, which carry only a
+   small zoom affordance and no caption. */
+
+.feature-card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-18);
+  margin: var(--space-18) 0;
+}
+
+.feature-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin-bottom: var(--space-9);
+}
+
+.feature-card h3 {
+  font-size: var(--type-body-size);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.feature-card p {
+  font-size: var(--type-body-size);
+}
+
+/* Small round zoom affordance seen on several bildung.png photos (lightbox
+   indicator). Reproduced visually; no lightbox behaviour wired up - out of
+   scope for this prototype. See README. */
+.zoom-affordance {
+  position: relative;
+}
+
+.zoom-affordance::after {
+  content: "";
+  position: absolute;
+  top: var(--space-9);
+  right: var(--space-9);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-text);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='1.4'%3E%3Ccircle cx='7' cy='7' r='4.2'/%3E%3Cpath d='M10 10l3 3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}

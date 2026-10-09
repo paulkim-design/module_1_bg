@@ -1,0 +1,36 @@
+/* "Nächste Termine" rows from bildung.png: a big date numeral + month/
+   weekday on days that start a new date, then per-slot time + format +
+   title + description. Both known events are the same day, so the date
+   numeral only renders once (see bildung.js). */
+
+.termine-list {
+  display: grid;
+  grid-template-columns: 160px 160px 1fr;
+  column-gap: var(--space-18);
+  row-gap: var(--space-21);
+}
+
+.termine-date {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.termine-meta {
+  font-size: var(--type-body-size);
+}
+
+.termine-time {
+  font-size: var(--type-body-size);
+}
+
+.termine-content p:first-child {
+  font-size: 13px;
+  margin-bottom: var(--space-3);
+}
+
+.termine-content h3 {
+  font-size: var(--type-title-small-size);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}

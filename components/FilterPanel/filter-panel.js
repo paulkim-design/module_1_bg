@@ -71,10 +71,17 @@ function renderFieldset(facetKey, options, offers, selection) {
     })
     .join("");
 
+  // Klassenstufe has 14 options (Kita + 1-13) - two columns so it isn't by
+  // far the tallest thing on the page next to Format/Sprache/Dauer's 2-4.
+  const optionsClass =
+    facetKey === "klasse"
+      ? "filter-panel__fieldset-options filter-panel__fieldset-options--two-col"
+      : "filter-panel__fieldset-options";
+
   return `
     <fieldset class="filter-panel__fieldset">
       <legend${draft ? ' data-draft="true"' : ""}>${escapeHtml(label)}</legend>
-      ${items}
+      <div class="${optionsClass}">${items}</div>
     </fieldset>
   `;
 }
@@ -95,7 +102,7 @@ export function createFilterPanel({ root, offers, initialSelection, onChange }) 
           aria-expanded="${isOpen}"
           aria-controls="filter-panel-columns"
         >
-          Filter${isOpen ? ' <span aria-hidden="true">×</span>' : ""}
+          Filter <span aria-hidden="true">${isOpen ? "×" : "+"}</span>
         </button>
       </div>
       ${

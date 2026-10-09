@@ -59,3 +59,14 @@
 .filter-panel__fieldset .checkbox {
   padding: var(--space-3) 0;
 }
+
+/* Klassenstufe only (14 options vs. 2-4 elsewhere) - two columns so it
+   isn't by far the tallest column on the page. */
+.filter-panel__fieldset-options--two-col {
+  columns: 2;
+  column-gap: var(--space-18);
+}
+
+.filter-panel__fieldset-options--two-col .checkbox {
+  break-inside: avoid;
+}

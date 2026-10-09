@@ -1,112 +1,298 @@
 /*
-  Rebuilt from input/detail.png: H1 + dek (no format eyebrow on this page,
-  unlike OfferCard - confirmed by re-checking the screenshot), figure with
-  credit caption, plain fact lines, registration link. "Was Ihre Klasse
-  mitnimmt", "Gruppenbesuch" and "Für die Schulleitung" have no screenshot
-  precedent (new sections per the brief) and reuse Stage 2's heading/body
-  styles rather than inventing new ones. See README.
+  Rebuilt to match the Figma offer-page mockup (node 10-406): title block,
+  "Auf einen Blick" definition list, booking button + three actions,
+  description, two-card Kontakt section, back link. See offer-detail.js for
+  what counts as draft vs. adopted mockup chrome, and README for the
+  specific places this intentionally keeps data/offers.js's real values
+  over what the mockup showed for this example offer.
 */
 
 .offer-detail {
-  max-width: 68ch;
-  padding: var(--space-24);
+  max-width: 1000px;
+  padding: var(--space-24) var(--space-24) var(--space-29);
 }
 
 .offer-detail__back {
-  display: inline-block;
-  margin-bottom: var(--space-21);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  margin-bottom: var(--space-24);
 }
 
-.offer-detail__head h1 {
-  font-family: var(--type-display-small-font);
-  font-size: var(--type-display-small-size);
-  font-weight: var(--type-display-small-weight);
-  line-height: var(--type-display-small-line);
-  letter-spacing: -0.02em;
-  text-decoration: underline;
-  text-decoration-thickness: 4px;
-  text-underline-offset: 10px;
-  margin-bottom: var(--space-13);
+.offer-detail__back svg {
+  width: 24px;
+  height: 24px;
 }
 
-.offer-detail__dek {
-  font-size: var(--type-title-small-size);
-  font-weight: 700;
-  line-height: var(--type-title-small-line);
-  margin-bottom: var(--space-21);
-}
-
-.offer-detail__figure {
-  margin: 0 0 var(--space-18);
-}
-
-.offer-detail__figure img,
-.offer-detail__image-placeholder {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  background: var(--color-gray-900);
-}
-
-.offer-detail__figure figcaption {
-  font-size: 12px;
-  color: var(--color-text);
-  opacity: 0.6;
-  margin-top: var(--space-3);
-}
-
-.offer-detail__facts {
-  margin-bottom: var(--space-18);
-}
-
-.offer-detail__facts p {
+.offer-detail__eyebrow {
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
   margin-bottom: var(--space-3);
 }
 
-.offer-detail__registration {
-  margin-bottom: var(--space-24);
+.offer-detail__head h1 {
+  font-family: var(--type-offer-title-font);
+  font-size: var(--type-offer-title-size);
+  font-weight: var(--type-offer-title-weight);
+  line-height: var(--type-offer-title-line);
+  letter-spacing: var(--type-offer-title-tracking);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thick);
+  text-underline-offset: 10px;
 }
 
-.offer-detail__outcomes,
-.offer-detail__group-visit,
-.offer-detail__principal {
-  padding-top: var(--space-24);
-  border-top: 1px solid rgba(0, 0, 0, 0.09);
-  margin-bottom: var(--space-24);
+.offer-detail__subheading {
+  font-family: var(--type-section-heading-font);
+  font-size: var(--type-section-heading-size);
+  font-weight: var(--type-section-heading-weight);
+  line-height: var(--type-section-heading-line);
+  margin-top: var(--space-24);
 }
 
-.offer-detail__outcomes h2,
-.offer-detail__group-visit h2,
-.offer-detail__principal h2 {
+.offer-detail__figure {
+  margin: var(--space-27) 0 0;
+}
+
+/* The caption/credit sits directly under its photo, not after the facts
+   table further down the page - moved here after feedback that "down
+   there" made no sense next to a photo this far above it. */
+.offer-detail__figure figcaption {
+  margin-top: var(--space-9);
+}
+
+.offer-detail__credit-label {
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-label-line);
+}
+
+.offer-detail__figure figcaption p {
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--type-label-line);
+}
+
+/* Natural ratio, not forced - the 12 offer photos range from ~0.67 (tall
+   portrait, e.g. Josef Kaiser's Café Moskau shot) to 2.0 (wide landscape),
+   so a single fixed aspect-ratio here would badly crop most of them. (The
+   16:9 crop belongs to components/OfferCard, where the grid genuinely needs
+   uniform tiles - this page has room to show each photo at its own shape.) */
+.offer-detail__figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.offer-detail__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--color-gray-900);
+}
+
+.offer-detail__glance-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-9);
+  padding-bottom: var(--space-15);
+  border-bottom: var(--border-width-thick) solid var(--color-text);
+}
+
+.offer-detail__glance-head h2 {
+  font-family: var(--type-section-heading-font);
+  font-size: var(--type-section-heading-size);
+  font-weight: var(--type-section-heading-weight);
+  line-height: var(--type-section-heading-line);
+}
+
+.offer-detail__glance-head p {
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  max-width: 28ch;
+}
+
+.offer-detail__facts {
+  margin: 0;
+}
+
+/* Stacked (label above value), not side-by-side - this column is narrower
+   now that it sits next to the description rather than spanning the full
+   page width, and several values (Dauer und Kosten, Anpassung) are full
+   sentences that wrap awkwardly next to a label in a tight side-by-side
+   grid. */
+.offer-detail__facts-row {
+  padding: var(--space-15) 0;
+  border-bottom: var(--border-width-thin) solid var(--color-text);
+}
+
+.offer-detail__facts-row dt {
+  font-family: var(--type-title-small-font);
   font-size: var(--type-title-small-size);
-  font-weight: 700;
-  margin-bottom: var(--space-9);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-3);
 }
 
-.offer-detail__draft-label {
-  font-size: 12px;
-  margin-bottom: var(--space-13);
+.offer-detail__facts-row dd {
+  margin: 0;
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
 }
 
-.offer-detail__outcomes ul {
+.offer-detail__facts-row dd ul {
   margin: 0;
   padding-left: 1.2em;
 }
 
-.offer-detail__group-visit p {
-  margin-bottom: var(--space-9);
-  max-width: 60ch;
+.offer-detail__actions {
+  padding-top: var(--space-24);
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-25);
 }
 
-.offer-detail__principal-actions {
+.offer-detail__booking {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  background: var(--color-text);
+  color: var(--color-background);
+  border: none;
+  border-radius: 0;
+  padding: var(--space-13) var(--space-15);
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
+}
+
+.offer-detail__booking svg {
+  width: 24px;
+  height: 24px;
+}
+
+.offer-detail__actions-secondary {
   display: flex;
-  gap: var(--space-13);
+  gap: var(--space-18);
+  flex-wrap: wrap;
+}
+
+.offer-detail__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-7);
+  border: none;
+  background: none;
+  padding: 0 0 var(--space-2);
+  border-bottom: var(--border-width-thin) solid var(--color-text);
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.offer-detail__action svg {
+  width: 24px;
+  height: 24px;
 }
 
 .offer-detail__status {
-  margin-top: var(--space-9);
+  flex-basis: 100%;
+  margin: 0;
   font-size: 13px;
   min-height: 1.5em;
+}
+
+/* Text is the primary content here (per feedback), so it takes the wider,
+   left/first column; "Auf einen Blick" is the secondary, reference column
+   next to it, not a block the reader has to scroll past the summary to
+   reach. */
+.offer-detail__body {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: start;
+  gap: var(--space-28);
+  margin-top: var(--space-27);
+}
+
+.offer-detail__description {
+  margin-top: 0;
+}
+
+.offer-detail__description h2 {
+  font-family: var(--type-section-heading-font);
+  font-size: var(--type-section-heading-size);
+  font-weight: var(--type-section-heading-weight);
+  line-height: var(--type-section-heading-line);
+  margin-bottom: var(--space-18);
+}
+
+.offer-detail__description p {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
+}
+
+.offer-detail__description p + p {
+  margin-top: var(--space-13);
+}
+
+.offer-detail__contact {
+  margin-top: var(--space-28);
+}
+
+.offer-detail__contact h2 {
+  font-family: var(--type-contact-heading-font);
+  font-size: var(--type-contact-heading-size);
+  font-weight: var(--type-contact-heading-weight);
+  line-height: var(--type-contact-heading-line);
+  letter-spacing: var(--type-contact-heading-tracking);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thick);
+  text-underline-offset: 8px;
+  margin-bottom: var(--space-24);
+}
+
+.offer-detail__contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-25);
+}
+
+.offer-detail__contact-card {
+  border-top: var(--border-width-thick) solid var(--color-text);
+  padding-top: var(--space-13);
+}
+
+.offer-detail__contact-name {
+  font-family: var(--type-title-medium-font);
+  font-size: var(--type-title-medium-size);
+  line-height: var(--type-title-medium-line);
+  font-weight: var(--type-title-medium-weight);
+  margin-top: var(--space-13);
+}
+
+.offer-detail__contact-card p {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
+  margin-top: var(--space-9);
+}
+
+.offer-detail__contact-card .link {
+  display: block;
+  margin-top: var(--space-13);
 }
 
 /* Print summary: hidden on screen, the only thing shown under @media print
@@ -114,24 +300,48 @@
    for something meant to be printed once and handed to a Schulleitung. */
 .offer-detail__print-summary {
   display: none;
+  font-family: var(--type-body-font);
+  font-size: 12pt;
+  line-height: 1.4;
+}
+
+.offer-detail__print-summary h1 {
+  font-size: 20pt;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 4pt;
+}
+
+.offer-detail__print-summary > p {
+  margin-bottom: 12pt;
+}
+
+.offer-detail__print-summary h2 {
+  font-size: 13pt;
+  font-weight: var(--font-weight-bold);
+  margin: 14pt 0 4pt;
 }
 
 .offer-detail__print-summary dl {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: 4px 12px;
+  gap: 3pt 12pt;
 }
 
 .offer-detail__print-summary dt {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .offer-detail__print-summary dd {
   margin: 0;
 }
 
+.offer-detail__print-summary ul {
+  margin: 4pt 0;
+  padding-left: 1.2em;
+}
+
 .offer-detail__print-summary h2 span {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
   font-size: 0.8em;
   margin-left: 6px;
 }

@@ -4,13 +4,25 @@
   padding: 0 var(--space-24) var(--space-29);
 }
 
-.catalogue-layout__body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-21);
-  align-items: start;
+/* Same big underlined heading style as offer.html's H1 (see
+   components/OfferDetail/offer-detail.css), duplicated here rather than
+   shared since each is a short, page-specific rule. */
+.catalogue__title {
+  font-family: var(--type-offer-title-font);
+  font-size: var(--type-offer-title-size);
+  font-weight: var(--type-offer-title-weight);
+  line-height: var(--type-offer-title-line);
+  letter-spacing: var(--type-offer-title-tracking);
+  text-decoration: underline;
+  text-decoration-thickness: var(--border-width-thick);
+  text-underline-offset: 10px;
+  padding: var(--space-24) 0 var(--space-21);
 }
 
-.catalogue-layout__body.is-filter-open {
-  grid-template-columns: 340px 1fr;
+.catalogue__count {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-18);
 }

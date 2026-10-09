@@ -1,9 +1,10 @@
 /*
-  design-system.html never documented a card component (see README Gaps).
-  Built from the primitives it does give us: square corners (Shape/Usage
-  rules say cards use 50% corners for *circular* crops elsewhere on the
-  site, not this rectangular teaser, so radius-3xl/full are not used here),
-  body/title text styles, and the one accessible border colour (black).
+  Rebuilt to match input/catalogue-target.png, in the type scale measured
+  off the offer-page Figma mockup (node 10-406): 16:9 photo (was 4:3), bold
+  30px/36 title, bold 20px/28 "Klasse x-y", 16px/22 eyebrow/meta lines.
+  design-system.html never documented a card component at all (see README
+  Gaps), so shape/border choices still follow the same reasoning as before
+  (square corners, the one accessible border colour).
 */
 
 .offer-card {
@@ -14,7 +15,7 @@
 }
 
 .offer-card__image-frame {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-gray-900);
   margin-bottom: var(--space-13);
@@ -26,24 +27,68 @@
   object-fit: cover;
 }
 
+/* Only renders if an offer ever ships with image.present: false - none of
+   the current 12 do, so this path is unexercised against today's data, but
+   kept correct per the brief's optional-photo pattern. */
+.offer-card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--color-background);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.08) 2px,
+    transparent 2px,
+    transparent 14px
+  );
+  border: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.offer-card__image-placeholder span {
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
+  padding: var(--space-7);
+}
+
 .offer-card__eyebrow {
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--type-label-font);
+  font-size: var(--type-label-size);
+  line-height: var(--type-label-line);
   margin-bottom: var(--space-3);
 }
 
 .offer-card__title {
-  font-family: var(--type-title-small-font);
-  font-size: var(--type-title-small-size);
-  font-weight: 700;
-  line-height: var(--type-title-small-line);
-  margin-bottom: var(--space-3);
+  font-family: var(--type-title-medium-font);
+  font-size: var(--type-title-medium-size);
+  line-height: var(--type-title-medium-line);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-9);
 }
 
-.offer-card__description {
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line);
-  color: var(--color-text);
+.offer-card__grade {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-13);
+}
+
+.offer-card__outcome {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: var(--space-13);
+}
+
+.offer-card__meta {
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
 }
 
 .offer-card:hover .offer-card__title {

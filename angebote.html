@@ -10,8 +10,6 @@
 <link rel="stylesheet" href="components/SiteFooter/site-footer.css">
 <link rel="stylesheet" href="components/Button/button.css">
 <link rel="stylesheet" href="components/Checkbox/checkbox.css">
-<link rel="stylesheet" href="components/PageHeader/page-header.css">
-<link rel="stylesheet" href="components/ResultsToolbar/results-toolbar.css">
 <link rel="stylesheet" href="components/FilterPanel/filter-panel.css">
 <link rel="stylesheet" href="components/OfferGrid/offer-grid.css">
 <link rel="stylesheet" href="components/OfferCard/offer-card.css">
@@ -47,32 +45,26 @@
 </header>
 
 <main>
-  <div class="page-header">
-    <h1>Angebote für Schulen und Kitas</h1>
-    <p class="page-header__lede">
-      Lebendig, fantasievoll, individuell. Für Kita-Kinder und Schüler*innen gibt es
-      in der Berlinischen Galerie ein vielfältiges Programm.
-    </p>
-  </div>
-
   <div class="catalogue">
-    <div class="results-toolbar">
-      <button type="button" class="button" id="filter-toggle" aria-expanded="false" aria-controls="filter-panel">
-        Filter
-      </button>
-      <p class="results-toolbar__count" id="results-count" data-draft="true" aria-live="polite"></p>
-    </div>
+    <!-- "Buchbare Angebote" is the real heading of this grid section in
+         input/overview.png (see data/offers.js's own top comment) - used
+         here as the page's one H1, replacing Stage 2's separate page-hero
+         title+lede, to match input/catalogue-target.png. -->
+    <h1 class="catalogue__title">Buchbare Angebote</h1>
 
-    <div class="catalogue-layout__body" data-filter-layout>
-      <aside class="filter-panel" id="filter-panel" aria-label="Filter" hidden></aside>
-      <div class="offer-grid" id="offer-grid"></div>
-    </div>
+    <aside class="filter-panel" id="filter-panel" aria-label="Filter"></aside>
+
+    <p class="catalogue__count" id="results-count" data-draft="true" aria-live="polite"></p>
+
+    <div class="offer-grid" id="offer-grid"></div>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="site-footer__back-to-top">
-    <a href="#top" class="button" aria-label="Nach oben">↑</a>
+    <a href="#top" class="site-footer__back-to-top-button" aria-label="Nach oben">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M18 11L12 5L6 11" stroke-width="2.5" stroke-linecap="square" stroke="currentColor"/></svg>
+    </a>
   </div>
   <div class="site-footer__columns">
     <div>

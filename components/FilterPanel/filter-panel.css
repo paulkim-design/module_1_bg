@@ -1,41 +1,35 @@
 /*
-  Facet content/behaviour reproduces input/filter.png (two columns, square
-  checkboxes, disabled-not-hidden options). The panel's own chrome (width,
-  border, the fact that it sits inline rather than as an overlay) has no
-  screenshot precedent - filter.png shows only the content - so this is a
-  plain bordered sidebar rather than an invented modal/drawer treatment.
-  See README.
+  Rebuilt to match input/catalogue-target.png: a full-width panel above the
+  grid (was a 340px sidebar beside it), one column per facet, a single
+  "Filter ×" toggle instead of a separate results-toolbar button + the
+  panel's own close button. Facet content/behaviour (disabled-not-hidden,
+  always-uncheckable) is unchanged from Stage 2 - see filter-logic.js.
 */
 
 .filter-panel {
-  border: 1px solid rgba(0, 0, 0, 0.16);
-  padding: var(--space-18);
-  align-self: start;
+  padding-bottom: var(--space-24);
+  border-bottom: var(--border-width-thick) solid var(--color-text);
+  margin-bottom: var(--space-24);
 }
 
 .filter-panel__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   margin-bottom: var(--space-18);
 }
 
-.filter-panel__header h2 {
-  font-size: var(--type-title-small-size);
-  font-weight: 700;
-}
-
-.filter-panel__close {
+.filter-panel__toggle {
   border: none;
   background: none;
-  font-size: 22px;
-  line-height: 1;
+  padding: 0;
   cursor: pointer;
-  padding: var(--space-3);
+  font-family: var(--type-section-heading-font);
+  font-size: var(--type-section-heading-size);
+  font-weight: var(--type-section-heading-weight);
+  line-height: var(--type-section-heading-line);
+  color: var(--color-text);
 }
 
 .filter-panel__notice {
-  border-left: 3px solid var(--color-accent);
+  border-left: var(--border-width-thin) solid var(--color-accent);
   background: var(--color-background);
   padding: var(--space-9) var(--space-13);
   margin-bottom: var(--space-18);
@@ -44,18 +38,21 @@
 
 .filter-panel__columns {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-18);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-25);
 }
 
 .filter-panel__fieldset {
   border: none;
   padding: 0;
-  margin: 0 0 var(--space-18);
+  margin: 0;
 }
 
 .filter-panel__fieldset legend {
-  font-weight: 700;
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-bold);
   padding: 0 0 var(--space-9);
 }
 

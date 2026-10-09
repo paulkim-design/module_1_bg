@@ -15,6 +15,11 @@ const FACET_LEGENDS = {
   dauer: { label: FACET_LABELS.dauer, draft: true },
 };
 
+// One column per facet, in this fixed order (input/catalogue-target.png's
+// own facets are different ones - this project's are "decided" per the
+// brief, just laid out the same way: one bold-labelled column each).
+const FACET_ORDER = ["klasse", "format", "sprache", "dauer"];
+
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, (char) => ({
     "&": "&amp;",
@@ -78,32 +83,41 @@ export function createFilterPanel({ root, offers, initialSelection, onChange }) 
   let selection = cloneSelection(initialSelection);
   let notice = null;
   const facetOptions = getFacetOptions(offers);
-  let isOpen = false;
+  // Open by default, per the brief - unlike Stage 2, where it started closed.
+  let isOpen = true;
 
   function render() {
     root.innerHTML = `
       <div class="filter-panel__header">
-        <h2>Filter</h2>
-        <button type="button" class="filter-panel__close" aria-label="Filter schließen">×</button>
+        <button
+          type="button"
+          class="filter-panel__toggle"
+          aria-expanded="${isOpen}"
+          aria-controls="filter-panel-columns"
+        >
+          Filter${isOpen ? ' <span aria-hidden="true">×</span>' : ""}
+        </button>
       </div>
       ${
         notice
           ? `<p class="filter-panel__notice" role="status" data-draft="true">${escapeHtml(notice)}</p>`
           : ""
       }
-      <div class="filter-panel__columns">
-        <div class="filter-panel__column">
-          ${renderFieldset("klasse", facetOptions.klasse, offers, selection)}
-        </div>
-        <div class="filter-panel__column">
-          ${renderFieldset("format", facetOptions.format, offers, selection)}
-          ${renderFieldset("sprache", facetOptions.sprache, offers, selection)}
-          ${renderFieldset("dauer", facetOptions.dauer, offers, selection)}
-        </div>
+      <div class="filter-panel__columns" id="filter-panel-columns" ${isOpen ? "" : "hidden"}>
+        ${FACET_ORDER.map(
+          (facetKey) => `
+            <div class="filter-panel__column">
+              ${renderFieldset(facetKey, facetOptions[facetKey], offers, selection)}
+            </div>
+          `
+        ).join("")}
       </div>
     `;
 
-    root.querySelector(".filter-panel__close").addEventListener("click", close);
+    root.querySelector(".filter-panel__toggle").addEventListener("click", () => {
+      isOpen = !isOpen;
+      render();
+    });
 
     root.querySelectorAll(".checkbox__input").forEach((input) => {
       input.addEventListener("click", (event) => {
@@ -126,25 +140,7 @@ export function createFilterPanel({ root, offers, initialSelection, onChange }) 
     });
   }
 
-  function open() {
-    isOpen = true;
-    root.hidden = false;
-    root.closest("[data-filter-layout]")?.classList.add("is-filter-open");
-  }
-
-  function close() {
-    isOpen = false;
-    root.hidden = true;
-    root.closest("[data-filter-layout]")?.classList.remove("is-filter-open");
-  }
-
-  function toggle() {
-    if (isOpen) close();
-    else open();
-  }
-
   render();
-  close();
 
-  return { open, close, toggle, getSelection: () => cloneSelection(selection) };
+  return { getSelection: () => cloneSelection(selection) };
 }

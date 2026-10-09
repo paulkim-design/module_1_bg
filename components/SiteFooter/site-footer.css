@@ -1,13 +1,18 @@
 /*
-  Reproduces the global footer seen at the bottom of both input/overview.png
-  and input/detail.png (identical on both, confirmed by comparing the two).
+  Chrome shared by every page. Content still reproduces the real footer from
+  input/overview.png / input/detail.png (full link list, Öffnungszeiten,
+  Eintritt, Tickets, address/contact) - the offer-page Figma mockup (node
+  10-406) shows a much shorter 3-column footer, read as a simplified
+  placeholder rather than a content change (same reasoning as SiteHeader,
+  see README). Restyled to the mockup's type scale/divider weight, and the
+  back-to-top character swapped for the mockup's real arrow icon.
 
   GAP: social icons (Instagram/Facebook/YouTube/Spotify) are rendered by the
   same unavailable icon font as the header. Shown as text links. See README.
 */
 
 .site-footer {
-  border-top: 2px solid var(--color-text);
+  border-top: var(--border-width-thick) solid var(--color-text);
   padding: var(--space-21) var(--space-24) var(--space-24);
 }
 
@@ -17,10 +22,29 @@
   margin-bottom: var(--space-21);
 }
 
+.site-footer__back-to-top-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 41px;
+  border: var(--border-width-thick) solid var(--color-text);
+  color: var(--color-text);
+}
+
+.site-footer__back-to-top-button svg {
+  width: 24px;
+  height: 24px;
+}
+
 .site-footer__columns {
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
   gap: var(--space-24);
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
 }
 
 .site-footer__social {
@@ -30,7 +54,7 @@
   margin: 0 0 var(--space-18);
   padding: 0;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .site-footer__links {
@@ -43,8 +67,7 @@
 }
 
 .site-footer__links a {
-  font-weight: 700;
-  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
   text-decoration: none;
 }
 
@@ -53,7 +76,7 @@
 }
 
 .site-footer__heading {
-  font-weight: 700;
+  font-weight: var(--font-weight-regular);
   margin-bottom: var(--space-9);
 }
 

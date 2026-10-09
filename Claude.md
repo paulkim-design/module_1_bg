@@ -20,6 +20,10 @@ through the Figma MCP, so structure matters as much as appearance.
 - [./input/filter.png]: current Programme filter panel
 - [./input/detail.png]: current offer page (Angebot)
 - [./input/design-system.html]: the ONLY source for colours, type, spacing, radii and
+- Figma mockup (primary visual reference, offer page):
+  https://www.figma.com/design/4cx5mNK7NGVRKsR27AafAH/Berlinische-Galerie?node-id=10-406
+  Read it through the Figma MCP. Where it conflicts with design-system.md or the
+  screenshots, the Figma mockup wins.
   component styles. Never invent values. If something is missing, use the closest
   existing token and add it to "Gaps" in README.md.
 

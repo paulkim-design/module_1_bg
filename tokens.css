@@ -28,9 +28,23 @@
   --color-accent: var(--color-red-500);
 
   /* Typography: typefaces */
-  --font-family-body: "HN", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* "HN" isn't an installed font anywhere, so without a real name in the
+     stack this was silently falling through to the system sans-serif
+     (san-serif fallback), not the site's actual typeface. The Figma offer-
+     page mockup (node 10-406) confirmed the real typeface is Helvetica
+     Neue, which macOS does have installed, so it's added here ahead of the
+     generic fallbacks. */
+  --font-family-body: "HN", "Helvetica Neue", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   /* GAP: see README — "icomoon" is an interface/icon font the scrape mismeasured as a text style (type-headline-small). Do not use for body or heading copy. */
   --font-family-interface: "icomoon", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Weight primitives: the Figma offer-page mockup (node 10-406) alternates
+     between exactly these two weights throughout, simpler than the scraped
+     site's assorted 500/600/900 baked into the type-* styles below. Used to
+     vary weight on top of a shared size/line pair (see --type-title-small
+     below) instead of inventing duplicate size tokens per weight. */
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
 
   /* Typography: text styles (9 in the source) */
   --type-display-large-font: var(--font-family-body);
@@ -82,6 +96,53 @@
   --type-body-line: 25px;
   --type-body-weight: 500;
 
+  /* Typography: offer-page additions (Figma node 10-406, "Create mockup for
+     offer page"). This mockup has no named Figma styles/variables of its
+     own (checked via get_variable_defs — empty), so these are new tokens
+     rather than renamed ones. None of the sizes/weights below exactly
+     match an existing type-* entry (weight and/or line-height always
+     differ), so nothing above is overwritten; where the SIZE happens to
+     coincide (20px/28px, the mockup's most-reused pairing, identical to
+     type-title-small-size/-line), components combine that existing size
+     with --font-weight-regular/-bold above instead of a duplicate token.
+     Used by offer.html and angebote.html. */
+  --type-offer-title-font: var(--font-family-body);
+  --type-offer-title-size: 75.67px;
+  --type-offer-title-line: 81.72px;
+  --type-offer-title-weight: var(--font-weight-bold);
+  --type-offer-title-tracking: -2.65px;
+
+  --type-section-heading-font: var(--font-family-body);
+  --type-section-heading-size: 40px;
+  --type-section-heading-line: 48px;
+  --type-section-heading-weight: var(--font-weight-bold);
+
+  --type-contact-heading-font: var(--font-family-body);
+  --type-contact-heading-size: 60px;
+  --type-contact-heading-line: 70px;
+  --type-contact-heading-weight: var(--font-weight-bold);
+  --type-contact-heading-tracking: -2.1px;
+
+  --type-title-medium-font: var(--font-family-body);
+  --type-title-medium-size: 30px;
+  --type-title-medium-line: 36px;
+  --type-title-medium-weight: var(--font-weight-regular);
+
+  --type-nav-main-font: var(--font-family-body);
+  --type-nav-main-size: 22px;
+  --type-nav-main-line: 28px;
+  --type-nav-main-weight: var(--font-weight-bold);
+
+  --type-nav-utility-font: var(--font-family-body);
+  --type-nav-utility-size: 16px;
+  --type-nav-utility-line: 20px;
+  --type-nav-utility-weight: var(--font-weight-bold);
+
+  /* Eyebrows/captions: format labels, contact-role labels, photo credits. */
+  --type-label-font: var(--font-family-body);
+  --type-label-size: 16px;
+  --type-label-line: 22px;
+
   /* Spacing: 31 raw values, no consistent grid in the source (flagged in
      README). Kept as space-1..31 to match the names the spec itself uses
      (e.g. Button padding references "space-21" and "space-7"). */
@@ -122,6 +183,13 @@
   /* GAP: see README — from the prose usage rule ("Cards use 50% corners"),
      not from the measured Shape table. Treat as provisional. */
   --radius-full: 50%;
+
+  /* Border widths: not in design-system.html at all (no component measured
+     a rule/divider). Added from the offer-page mockup (node 10-406), which
+     uses exactly these two weights throughout (table rows, dividers,
+     underlines, button borders). */
+  --border-width-thin: 3px;
+  --border-width-thick: 4px;
 
   /* Motion: durations and easing observed across 6 transition declarations
      (the source lede claims 7; only 6 were listed, see README). */

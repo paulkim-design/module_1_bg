@@ -9,7 +9,6 @@ import { offerCardMarkup } from "./components/OfferCard/offer-card.js";
 
 const gridEl = document.getElementById("offer-grid");
 const countEl = document.getElementById("results-count");
-const toggleButton = document.getElementById("filter-toggle");
 const panelRoot = document.getElementById("filter-panel");
 
 function renderResults(selection) {
@@ -28,18 +27,11 @@ function renderResults(selection) {
 
 const initialSelection = selectionFromSearchParams(new URLSearchParams(location.search));
 
-const filterPanel = createFilterPanel({
+createFilterPanel({
   root: panelRoot,
   offers,
   initialSelection,
   onChange: (selection) => renderResults(selection),
-});
-
-toggleButton.addEventListener("click", () => {
-  filterPanel.toggle();
-  const isOpen = !panelRoot.hidden;
-  toggleButton.setAttribute("aria-expanded", String(isOpen));
-  toggleButton.setAttribute("aria-pressed", String(isOpen));
 });
 
 renderResults(initialSelection);

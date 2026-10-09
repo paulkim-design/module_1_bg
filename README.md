@@ -25,6 +25,17 @@ full flow (bildung → filtered catalogue → offer → back to the same filtere
 catalogue) is verified end to end. See "Entry module placement" below for
 where it went and why.
 
+**Stage 5**: rebuilt `offer.html` from the Figma offer-page mockup (node
+10-406, read via the Figma MCP) and `angebote.html` from `input/catalogue-
+target.png`, in that mockup's visual language (type scale, border weights,
+icons). `tokens.css` gained new type styles, two weight primitives, two
+border-width tokens, and a real-typeface fallback (see "Tokens from the
+Figma mockup" below). `SiteHeader`/`SiteFooter` were restyled to match but
+kept their real screenshot-sourced content. See "Offer page rebuild" and
+"Catalogue rebuild" below for what came from the mockup vs. what stayed
+from `data/offers.js`, including two places real data overrode the mockup's
+own example content.
+
 **Correction while starting Stage 2**: re-checking `overview.png` for the
 Klassenstufe/Kita facet turned up 2 offer cards in its later "Klein, aber
 oho …" section (`workshop-drachensachen-kita`, `workshop-monsterjagd-kita`)
@@ -320,3 +331,193 @@ treatment as everything else not traced from a screenshot.
   207 m² section, 2 in the hero/intro row) were cropped the same
   pixel-brightness-detection way as Stages 1–3's offer images, each
   spot-checked visually after cropping.
+
+### Tokens from the Figma mockup (Stage 5)
+
+The offer-page mockup (node 10-406) has no named Figma styles or variables
+(`get_variable_defs` returned empty), so nothing could be renamed from a
+source name the way `type-*`/`space-*` were from `design-system.html` —
+these are new tokens, added rather than overwriting anything, since none of
+the mockup's sizes exactly matches an existing style (weight and/or
+line-height always differ):
+
+- `--font-weight-regular` (400) / `--font-weight-bold` (700) — the mockup
+  alternates between exactly these two weights throughout, simpler than the
+  scraped site's assorted 500/600/900. Its most-reused size (20px/28px) is
+  identical to the existing `--type-title-small-size`/`-line`, so components
+  combine that size with these new weight primitives instead of a duplicate
+  size token.
+- New composite styles: `--type-offer-title-*` (75.67px/81.72px/700, the H1),
+  `--type-section-heading-*` (40px/48px/700), `--type-contact-heading-*`
+  (60px/70px/700, tracked), `--type-title-medium-*` (30px/36px), `--type-nav-
+  main-*` (22px/28px/700), `--type-nav-utility-*` (16px/20px/700), and
+  `--type-label-*` (16px/22px, eyebrows/captions).
+- `--border-width-thin` (3px) / `--border-width-thick` (4px) — not in
+  `design-system.html` at all (no component there ever measured a
+  rule/divider); the mockup uses exactly these two weights everywhere
+  (table rows, dividers, underlines, button borders).
+- **Real-typeface fix, not mockup-specific**: `--font-family-body` named only
+  `"HN"` before this, which isn't an installed font anywhere, so every page
+  was silently rendering in the browser's system sans-serif fallback, not
+  the site's actual typeface. The mockup's own code confirmed the real
+  typeface is Helvetica Neue, which macOS does have — added to the stack
+  ahead of the generic fallbacks, fixing text rendering on all 4 pages, not
+  just the two rebuilt this stage.
+- The mockup's accent red (`#e30614`) is one hex digit off the existing
+  `--color-accent`/red-500 (`#e30613`) — read as export rounding, not a
+  deliberate change, so no new colour token was added; if anything this
+  confirms the earlier guess rather than contradicting it.
+- A handful of the mockup's one-off section paddings (138px, 76px, 120px,
+  130px, 38px) don't match any `--space-N` value and weren't added as new
+  tokens — the rebuild uses the existing spacing scale creatively instead of
+  importing every absolute Figma offset verbatim, since this is a reflow
+  into our own layout, not a pixel-for-pixel canvas copy. Same "no
+  consistent grid" situation as the base spacing scale, just not grown
+  further for a handful of unrepeated numbers.
+- Icons: the mockup ships real SVGs (print, link, mail, external-link, two
+  arrows) as downloadable Figma assets — downloaded into `assets/icons/`,
+  stroke recoloured to `currentColor`, and used for Drucken/Link kopieren/
+  Per E-Mail senden/Beim Museumsdienst buchen/the back link/the footer's
+  back-to-top button, replacing plain characters. This closes part of the
+  long-standing icon-font gap above, for these five icons only — Leichte
+  Sprache/DGS/Schriftgröße/Kontrast/social icons are still plain text links.
+
+### Offer page rebuild (Stage 5, `offer.html`)
+
+Rebuilt from the Figma mockup (node 10-406), now `Claude.md`'s named primary
+visual reference for this page, which wins over `design-system.html`/the
+screenshots on conflict per its own instruction. Two kinds of mockup content
+were deliberately **not** taken over, because they conflict with real data
+already in `data/offers.js` for the exact offer the mockup modelled
+(`ueberblicksfuehrung-dauerausstellung`), and `data/offers.js` is the
+authoritative source for offer facts, mockup or not:
+
+- **Klasse stays "1–13"**, not the mockup's "6–13" (`overview.png`'s own
+  grade band for this offer).
+- **Dauer und Kosten stays `[Platzhalter]`**, not the mockup's "60 Min. /
+  50 € oder 90 Min. / 75 €" — this offer's real duration/cost is still
+  unknown. Those exact figures turned out to belong to a different offer
+  entirely (see "Catalogue rebuild" below) — the mockup's own filler text,
+  reused on the wrong example card, not new information about this one.
+- **Sprache shows only "Deutsch"** (draft, assumed), not the mockup's added
+  "Englisch, Französisch" — Englisch is an established zero-match facet
+  value and Französisch isn't modelled anywhere in the filter at all.
+- **The hero photo and its credit stay the real cropped asset / `[Platzhalter]`**,
+  not the mockup's Unsplash placeholder photo and "Foto: Jon Tyson /
+  Unsplash" credit.
+- Figma's own logo graphic (two placeholder SVG layers) was not used either,
+  for the same reason as every other stage: `Claude.md` says crop the logo
+  from a screenshot, never redraw or substitute it. `assets/shared/logo.png`
+  stays.
+
+What *was* taken over as draft content, since the brief singled these out
+("outcomes, contact roles, contact details... stay data-draft"): the "Was
+Ihre Klasse mitnimmt" outcome bullets and the "Berlin sehen. Kunst
+verstehen." description, both stored on `ueberblicksfuehrung-dauerausstellung`
+in `data/offers.js` as `outcomes`/`longDescription` (only this one offer has
+either field — every other offer still uses the generic bracketed one-
+sentence placeholder, same text as the catalogue card, per the brief: "don't
+write outcomes per offer"); and the two-card Kontakt section (phone, both
+emails, the "Buchung und Termin"/"Fragen zum Angebot" role labels) — entirely
+new, entirely `data-draft`, replacing Stage 3's single `mailto:` registration
+line.
+
+Everything else promoted from the mockup is treated as adopted UI chrome,
+not draft: section headings ("Auf einen Blick", "Kontakt"), the "Auf einen
+Blick" field labels (Klasse, Dauer und Kosten, Sprache, Ort, Buchung,
+Anpassung), and the three action labels (Drucken, Link kopieren, Per E-Mail
+senden), consistent with how Stage 3 already left its own functional labels
+unmarked. Eintritt/Gruppengröße keep Stage 3's draft status (still no real
+source anywhere), and Anpassung and the "telefonisch oder per E-Mail..."
+half of the Buchung row are new unconfirmed process claims, so they're
+draft too, on the general copy rule, not just the three explicitly-named
+categories.
+
+Other decisions:
+
+- **A format eyebrow now sits above the H1**, reversing Stage 3's explicit
+  "no eyebrow" finding from `detail.png` — the mockup is the named visual
+  reference for this rebuild, and it has one.
+- **The subheading** ("{Format} für Schulklassen/Kita-Gruppen · Klasse x–y")
+  is new assembled copy with no screenshot or mockup-text precedent for its
+  exact template, so it's `data-draft`, even though the fields inside it
+  (format, grade) are real.
+- **The back-link label** implements "Weitere Angebote für Klasse n" /
+  "Alle Angebote für Schulen" literally for the single-grade and no-filter
+  cases the brief named. Anything else (several grades at once, or only
+  format/sprache/dauer active) falls back to the generic label, and a single
+  Kita selection gets the symmetric "Weitere Angebote für Kita-Gruppen" —
+  neither case was specified, both are a small, reversible extension of the
+  given rule. Verified for grade, kita, multi-grade, and no-filter cases via
+  `--dump-dom`.
+- **"Per E-Mail senden"** opens `mailto:?subject=<title>&body=<page URL>`,
+  no recipient (none was specified) — a teacher sends it on to whoever they
+  need to.
+- **"Beim Museumsdienst buchen"** is `data-draft` with `href="#"`, same
+  placeholder-link treatment as Stage 3's "Besuch › Tickets" — no real
+  booking URL exists anywhere in sourced data.
+- The print summary (`@media print`) was restyled with real type sizes
+  (it had none before, just unstyled browser defaults) to match the new
+  page, keeping the same scope plus the newly-expanded facts and both
+  contact cards. Re-verified via `--print-to-pdf`: one page, correct
+  content. The unstyled version's browser-default H1 size turned out to
+  render "Ü" with its dieresis visually lost at small raster sizes in the
+  PDF preview even though the underlying text was always correct
+  (confirmed via the PDF's extracted text layer before restyling) — gone
+  after giving the print H1 an explicit size, so this was a rendering
+  artifact of leaving print typography unstyled, not a text-encoding bug.
+
+### Catalogue rebuild (Stage 5, `angebote.html`)
+
+Rebuilt from `input/catalogue-target.png`, a layout wireframe (generic
+sans-serif, bracketed placeholders, striped photo boxes) — read for
+structure, not literal styling, with type/spacing/icons coming from the
+offer-page mockup instead, per the brief.
+
+- **"Buchbare Angebote" replaces the old page-hero H1 + lede.** It's real
+  sourced copy either way — the exact heading of this grid section in
+  `overview.png` (see `data/offers.js`'s top comment) — just promoted from a
+  sub-heading to the page's one H1, per the brief ("as long as the page has
+  exactly one H1"). `components/PageHeader` is unchanged and still used by
+  `bildung.html`.
+- **Filter columns are one facet each, in this order**: Klassenstufe,
+  Format, Sprache, Dauer (Klassenstufe visibly the tallest, 14 options vs.
+  2–4 elsewhere — accepted, since facets "stay as decided" independent of
+  the image's own, different facet set).
+- **One toggle, not two**: Stage 2 had a separate results-toolbar "Filter"
+  button plus the panel's own "×" close button. Now a single button owns
+  both states (`aria-expanded`, `aria-controls="filter-panel-columns"`),
+  reading "Filter ×" open / "Filter" closed, and **starts open**, unlike
+  Stage 2. Facet logic itself (disabled-not-hidden, always-uncheckable
+  selections, the auto-clear-on-conflict behaviour, the grade-then-title
+  sort) is untouched — see the Stage 2 entries above, all still accurate.
+- **The live result count moved out of the old bordered toolbar** (which had
+  no precedent in the wireframe) to a plain line above the grid.
+- **The grid is a fixed 4 columns** (was `auto-fill`/flexible) — safe given
+  desktop-only, min. 1280px.
+- **Cards use the generic bracketed outcome sentence for all 12 offers,
+  including `ueberblicksfuehrung-dauerausstellung`**, even though that one
+  offer has real outcome bullets on its own detail page. The brief's
+  exception ("the Dauerausstellung tour uses the bullets from the Figma
+  mockup") is read as applying to the detail page's richer "Was Ihre Klasse
+  mitnimmt" list, not the card, since the card format is explicitly "a
+  one-sentence outcome" and three bullets don't fit that. Worth a second
+  look if the intent was actually both surfaces.
+- **Real data override, found via the catalogue mockup's own filler text**:
+  the "60/90 Min., 50 €/75 €, Deutsch/Englisch/Französisch" shown in
+  `catalogue-target.png` was attached to the wrong example card
+  (Dauerausstellung, which doesn't have this data — see above) but is real
+  for a different offer: `ueberblicksfuehrung-aufbruch-in-die-moderne`,
+  confirmed against that offer's own live page and added to `data/offers.js`
+  (`duration`, `cost`, and a new `languageDisplay` field). `languageDisplay`
+  is additive and display-only — the existing single-value `language.value`
+  (still `"de"`) and the Sprache filter facet are untouched, so this offer
+  doesn't gain a phantom "Französisch" filter option nothing else in the
+  data model supports; it only changes what renders on the card/detail page.
+  Every other offer's Dauer/Kosten/Sprache still show their real value or a
+  bracketed placeholder, independent per field (`[Dauer]`, `[Kosten]`), per
+  the brief.
+- **16:9 photo frame** (was 4:3), with a striped "Foto 16:9 (optional)"
+  placeholder implemented for completeness per the brief, though all 12
+  offers currently have a real photo, so it's unexercised against today's
+  data.

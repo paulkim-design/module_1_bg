@@ -1,6 +1,9 @@
+/* 4-column grid, as in input/catalogue-target.png (was a flexible
+   auto-fill grid before). Desktop-only (min. 1280px per Claude.md), so a
+   fixed column count is safe. */
 .offer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--space-21) var(--space-18);
 }
 

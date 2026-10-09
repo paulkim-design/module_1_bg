@@ -35,7 +35,10 @@
 }
 
 .checkbox__label {
-  font-size: var(--type-body-size);
+  font-family: var(--type-title-small-font);
+  font-size: var(--type-title-small-size);
+  line-height: var(--type-title-small-line);
+  font-weight: var(--font-weight-regular);
 }
 
 .checkbox:has(.checkbox__input[aria-disabled="true"]) {

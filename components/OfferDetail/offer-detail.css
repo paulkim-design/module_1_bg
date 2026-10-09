@@ -7,8 +7,14 @@
   over what the mockup showed for this example offer.
 */
 
+/* Wide enough to fill a typical desktop window and then some, so
+   "Auf einen Blick" isn't squeezed into a narrow column where every value
+   wraps and the list runs long. The photo (below) is capped narrower on
+   its own - a tall portrait photo stretched to this same width would get
+   absurdly tall, but the facts/description row doesn't have that problem,
+   so it's free to run wider than the photo. */
 .offer-detail {
-  max-width: 1000px;
+  max-width: 2000px;
   padding: var(--space-24) var(--space-24) var(--space-29);
 }
 
@@ -51,6 +57,7 @@
 }
 
 .offer-detail__figure {
+  max-width: 1000px;
   margin: var(--space-27) 0 0;
 }
 
@@ -149,12 +156,18 @@
   padding-left: 1.2em;
 }
 
+/* Back inside "Auf einen Blick" (not a full-width strip below the whole
+   page) - these actions belong to it, not to the page as a whole. At the
+   widths this page is actually used at, the wider "Auf einen Blick" column
+   (see .offer-detail__body) already fits all three on one row; flex-wrap
+   stays on as a graceful fallback nearer the 1280px floor rather than a
+   hard requirement. */
 .offer-detail__actions {
   padding-top: var(--space-24);
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: var(--space-25);
+  gap: var(--space-18);
 }
 
 .offer-detail__booking {
@@ -218,7 +231,7 @@
    reach. */
 .offer-detail__body {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   align-items: start;
   gap: var(--space-28);
   margin-top: var(--space-27);
